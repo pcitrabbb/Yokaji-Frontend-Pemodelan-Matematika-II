@@ -22,6 +22,7 @@ interface RiwayatSetoran {
   status: string;
   tanggal: string;
   catatan?: string;
+  [key: string]: unknown; // ← tambah ini
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
