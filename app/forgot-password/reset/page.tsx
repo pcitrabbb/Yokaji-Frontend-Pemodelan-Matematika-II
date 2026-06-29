@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import api from '@/lib/api';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+export const dynamic = 'force-dynamic';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
