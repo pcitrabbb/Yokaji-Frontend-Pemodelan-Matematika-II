@@ -1,11 +1,17 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-import ResetPasswordForm from './ResetPasswordForm.tsx';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+
+const ResetPasswordForm = dynamic(() => import('./ResetPasswordForm'), {
+  ssr: false,
+  loading: () => <div>Loading...</div>,
+});
 
 export default function ResetPasswordClient() {
-  const searchParams = useSearchParams();
-  const emailFromQuery = searchParams.get('email') ?? '';
-
-  return <ResetPasswordForm emailFromQuery={emailFromQuery} />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResetPasswordForm />
+    </Suspense>
+  );
 }

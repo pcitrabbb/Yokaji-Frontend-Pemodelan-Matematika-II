@@ -2,14 +2,12 @@
 
 import { useState, useRef, useEffect } from 'react';
 import api from '@/lib/api';
-import { useRouter } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-interface Props {
-  emailFromQuery: string;
-}
-
-export default function ResetPasswordForm({ emailFromQuery }: Props) {
+export default function ResetPasswordForm() {
+  const searchParams = useSearchParams();
+  const emailFromQuery = searchParams.get('email') ?? '';
   const router = useRouter();
 
   const [step, setStep] = useState<'otp' | 'password'>('otp');
@@ -386,7 +384,6 @@ export default function ResetPasswordForm({ emailFromQuery }: Props) {
       <div className="rp-right">
         <div className="rp-card">
 
-          {/* Brand mini mobile */}
           <div className="mobile-brand">
             <svg width="34" height="34" viewBox="0 0 38 38" fill="none">
               <rect width="38" height="38" rx="9" fill="rgba(255,255,255,0.12)"/>
@@ -400,7 +397,6 @@ export default function ResetPasswordForm({ emailFromQuery }: Props) {
             </div>
           </div>
 
-          {/* Kembali */}
           <div style={{ marginBottom: '1.5rem' }}>
             <Link href="/forgot-password" className="back-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -410,7 +406,6 @@ export default function ResetPasswordForm({ emailFromQuery }: Props) {
             </Link>
           </div>
 
-          {/* Step indicator */}
           <div className="step-indicator">
             <div className={`step-dot ${step === 'otp' ? 'active' : 'done'}`} />
             <div className={`step-dot ${step === 'password' ? 'active' : step === 'otp' ? '' : 'done'}`} />
