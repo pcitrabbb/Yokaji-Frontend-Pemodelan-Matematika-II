@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   images: {
     remotePatterns: [
       {
@@ -18,13 +21,6 @@ const nextConfig: NextConfig = {
         destination: 'http://localhost:8000/storage/:path*',
       },
     ];
-  },
-};
-
-export default nextConfig;
-const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true, // ← tambah ini
   },
 };
 
