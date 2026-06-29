@@ -157,7 +157,7 @@ export default function DataSantriDetailPage() {
 
     async function fetchRiwayat(): Promise<RiwayatSetoran[]> {
       const res = await api.get(`/riwayat/${santriId}`);
-      return extractArray(res.data).map(item => normalizeRiwayat(item as Record<string, unknown>));
+      return extractArray(res.data).map(item => normalizeRiwayat(item as unknown as Record<string, unknown>));
     }
 
     Promise.allSettled([
